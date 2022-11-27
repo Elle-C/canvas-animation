@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body {
+    margin:0;
+    align-items:center;
+    justify-content: center;
+    min-height: 100 vh;
+    width: 100 vw;
+    background-color: blueviolet;
+}
+
+canvas {
+    position:absolute;
+}
+
+#scene {
+    position:absolute;
+    margin:15%;
+    width: 70%;
+    aspect-ratio: 4 / 3;
+    border: dotted;
+}
+
+#webcam {
+    width: 1px;
+    height: 1px;
+}
+
+#rain {
+top:0;
+left: 0;
+}
