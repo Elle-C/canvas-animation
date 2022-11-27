@@ -2,7 +2,7 @@
     let pw = page.clientWidth;
     let ph = page.clientHeight;
 
-    function optimizeCanvas(canvas) {
+    const optimizeCanvas = (canvas) => {
       //Get the DPR and size of canvas
       const dpr = window.devicePixelRatio;
       const rect = canvas.getBoundingClientRect();
@@ -16,16 +16,16 @@
       canvas.style.height = `${rect.height}px`;
     }
 
-    //background
+    /* //background
     const bg = document.getElementById("background");
     const ctxbg = bg.getContext("2d");
     bg.width = pw;
     bg.height = ph;
     optimizeCanvas(bg);
     ctxbg.fillStyle = "pink";
-    ctxbg.fillRect(0, 0, pw, ph);
+    ctxbg.fillRect(0, 0, pw, ph); */
 
-  /*   //webcam
+    //webcam
     const video = document.querySelector("#webcam");
     const vidcanvas = document.querySelector("#cam");
     const vidctx = vidcanvas.getContext("2d");
@@ -64,7 +64,7 @@
         }
       }
       vidctx.putImageData(imageData, 0, 0);
-    } */
+    }
 
     //effects
     window.addEventListener("load", function() {
@@ -85,7 +85,7 @@
     const ctxRain = canvasRain.getContext("2d");
     canvasRain.width = window.innerWidth;
     canvasRain.height = window.innerHeight;
-    optimizeCanvas(canvasRain);
+    //optimizeCanvas(canvasRain);
 
     class Fractal {
       constructor(canvasWidth, canvasHeight) {
@@ -97,7 +97,7 @@
         this.scale = 0.5;
         this.spread = Math.random() * 2.8 + 0.1;
         this.branches = 2;
-        this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+        this.color = "hsl(" + Math.random() * 360 + ", 100%, 90%)";
       }
 
       draw(context) {
@@ -167,7 +167,6 @@
         context.drawImage(this.image, -this.width/2, -this.height/2, this.width, this.height)
         context.restore();
       }
-
     }
 
     class Rain {
@@ -175,13 +174,13 @@
         this.canvasWidth = canvasWidth;
         this.canvasHeight = canvasHeight;
         this.image = image;
-        this.numberOfPArticles = 200;
+        this.numberOfParticles = 200;
         this.particles = [];
         this.#initialize();
       }
 
     #initialize(){
-      for (let i=0; i<this.numberOfPArticles; i++) {
+      for (let i=0; i<this.numberOfParticles; i++) {
         this.particles.push(new Particle(this.canvasWidth, this.canvasHeight, this.image));
       }
     }
