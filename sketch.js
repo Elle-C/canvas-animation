@@ -2,9 +2,11 @@
     let pw = page.clientWidth;
     let ph = page.clientHeight;
 
-    const optimizeCanvas = (canvas) => {
+    function optimizeCanvas (canvas) {
       //Get the DPR and size of canvas
       const dpr = window.devicePixelRatio;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
       const rect = canvas.getBoundingClientRect();
       // Set the actual size of the canvas
       canvas.width = rect.width * dpr;
@@ -72,6 +74,7 @@
     const ctxeffects = effects.getContext("2d");
     effects.width = pw;
     effects.height = ph;
+    optimizeCanvas(effects)
 
     ctxeffects.lineWidth = 6;
     ctxeffects.lineCap = "round";
@@ -85,12 +88,12 @@
     const ctxRain = canvasRain.getContext("2d");
     canvasRain.width = window.innerWidth;
     canvasRain.height = window.innerHeight;
-    //optimizeCanvas(canvasRain);
+    optimizeCanvas(canvasRain);
 
     class Fractal {
       constructor(canvasWidth, canvasHeight) {
-        this.canvasWidth = canvasWidth;
-        this.canvasHeight = canvasHeight;
+        this.canvasWidth = canvasWidth/2;
+        this.canvasHeight = canvasHeight/2;
         this.size = this.canvasWidth * 0.2;
         this.sides = 6;
         this.maxLevel = 2;
